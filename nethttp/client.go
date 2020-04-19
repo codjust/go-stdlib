@@ -145,6 +145,11 @@ func TracerFromRequest(req *http.Request) *Tracer {
 	return tr
 }
 
+// SetRoundTripper support set DefaultTransport
+func (t *Transport) SetRoundTripper(roundTripper http.RoundTripper) {
+	t.RoundTripper = roundTripper
+}
+
 // RoundTrip implements the RoundTripper interface.
 func (t *Transport) RoundTrip(req *http.Request) (*http.Response, error) {
 	rt := t.RoundTripper
